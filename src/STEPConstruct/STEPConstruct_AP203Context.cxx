@@ -105,7 +105,7 @@ Handle(StepBasic_DateAndTime) STEPConstruct_AP203Context::DefaultDateAndTime ()
 
     Handle(StepBasic_CoordinatedUniversalTimeOffset) zone = 
       new StepBasic_CoordinatedUniversalTimeOffset;
-    Standard_Integer shift = Standard_Integer(timezone);
+    Standard_Integer shift = Standard_Integer(_timezone);
     Standard_Integer shifth = abs ( shift ) / 3600;
     Standard_Integer shiftm = ( abs ( shift ) - shifth * 3600 ) / 60;
     StepBasic_AheadOrBehind sense = ( shift >0 ? StepBasic_aobBehind : 
