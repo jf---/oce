@@ -785,6 +785,9 @@ if(MINGW)
 	# For the file Message_MsgFile.cxx of TKernel we must additionally set the __TCollection_DLL define to resolve the needed HashCode() method
 	set_source_files_properties("src/Message/Message_MsgFile.cxx" PROPERTIES COMPILE_FLAGS "-D__Message_DLL -D__TCollection_DLL")
 	message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+	
+	# Define high enough WIN32 version
+	add_definitions("-D_WIN32_WINNT=0x0501")
 endif(MINGW)
 
 # DISABLE SECURE CRT WARNINGS AND OTHER MS CRT SPECIFC THINGS
@@ -1080,7 +1083,11 @@ if (OCE_AUTOINSTALL_DEPENDENT_LIBS)
 
 	if (OCE_VISU_DEP AND OCE_REQUIRES_FREETYPE)
 		get_filename_component(FREETYPE_BIN_DIR ${FREETYPE_LIBRARY} PATH)
-		get_filename_component(FREETYPE_BIN_DIR_DBG ${FREETYPE_LIBRARY_DEBUG} PATH)
+		if (CMAKE_CONFIGURATION_OPTIONS)
+          get_filename_component(FREETYPE_BIN_DIR_DBG ${FREETYPE_LIBRARY_DEBUG} PATH)
+        else()
+          set(FREETYPE_BIN_DIR_DBG ${FREETYPE_BIN_DIR})
+        endif()
 		install(FILES ${FREETYPE_BIN_DIR_DBG}/freetyped.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
     	install(FILES ${FREETYPE_BIN_DIR}/freetype.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
     	install(FILES ${FREETYPE_BIN_DIR_DBG}/freetyped.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
