@@ -7,8 +7,8 @@ OCE contains additional code over OCCT contributed by (alphabetical sort):
 - Greg Allen ()
 - Denis Barbier (bouzim at gmail dot com, https://github.com/dbarbier)
 - Benjamin Bihler (https://github.com/Bihlerben)
-- https://github.com/blobfish
-- https://github.com/fohlenrolle (mmuellen at gmx dot de)
+- @blobfish (https://github.com/blobfish)
+- fohlenrolle (mmuellen at gmx dot de)
 - QbProg (tholag at gmail dot com)
 - Jake ()
 - Johannes Obermayr (https://github.com/jobermayr)
